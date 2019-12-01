@@ -1,7 +1,3 @@
-Dependências
-    - bootstrap
-    - font-awesome
-
 Tela inicial
     - menu
         - categorias
