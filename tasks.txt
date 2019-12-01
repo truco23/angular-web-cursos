@@ -1,0 +1,22 @@
+Dependências
+    - bootstrap
+    - font-awesome
+
+Tela inicial
+    - menu
+        - categorias
+        - cursos
+    - main
+        - info sobre projeto
+
+Tela categorias
+    - listagem
+    - cadastro
+    - alteração
+    - remoção
+
+Tela cursos
+    - listagem
+    - cadastro
+    - alteração
+    - remoção
