@@ -5,6 +5,10 @@ const appRoutes: Routes = [
     {
         path: '',
         loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)
+    },
+    {
+        path: 'categories',
+        loadChildren: () => import('./modules/categories/categories.module').then(m => m.CategoriesModule)
     }
 ]
 
