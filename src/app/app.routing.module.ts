@@ -8,7 +8,7 @@ const appRoutes: Routes = [
     },
     {
         path: 'categories',
-        loadChildren: () => import('./modules/categories/categories.module').then(m => m.CategoriesModule)
+        loadChildren: () => import('./modules/categories/list-categories/list-categories.module').then(m => m.ListCategoriesModule)
     }
 ]
 
