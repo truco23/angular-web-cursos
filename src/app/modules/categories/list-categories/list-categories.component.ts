@@ -16,11 +16,10 @@ export class ListCategoriesComponent implements OnInit {
     private _categorieService: CategoriesService
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this._categorieService.get().subscribe(data => {
       this.data = data;
       this.categories = this.data.docs
-      console.log(this.categories);
     }, error => {
       console.error(error);
       return error

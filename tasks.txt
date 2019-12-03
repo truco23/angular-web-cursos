@@ -1,5 +1,4 @@
 Tela categorias
-    - listagem
     - cadastro
     - alteração
     - remoção
