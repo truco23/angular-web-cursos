@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-add-categories',
@@ -7,9 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddCategoriesComponent implements OnInit {
 
-  constructor() { }
+  formAdd: FormGroup;
 
-  ngOnInit() {
+  constructor(
+    private _formBuilder: FormBuilder
+  ) { }
+
+  ngOnInit(): void {
+    this.formAdd = this._formBuilder.group({
+      name: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3)
+        ]
+      ]
+    })
   }
 
+  addCategorie(e: Event): void {
+    
+    e.preventDefault();
+
+    const {name} = this.formAdd.getRawValue()
+    console.log('cadastro', name);
+    
+  }
 }

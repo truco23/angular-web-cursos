@@ -1,1 +1,28 @@
-<p>add-categories works!</p>
+<section class="container">
+    <div class="jumbotron bg-transparent text-center">
+        <h1>Cadastro de categoria</h1>
+    </div>
+
+    <form [formGroup]="formAdd" (submit)="addCategorie($event)" #form="ngForm">
+        <fieldset>
+            <label for="name">Nome da categoria:</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-dark text-white">
+                        <i class="fas fa-signature"></i>
+                    </span>
+                </div>
+                <input type="text" class="form-control" id="name" aria-describedby="name" formControlName="name">
+            </div>
+            <small 
+                class="form-text alert alert-danger form-text mt-0"
+                *ngIf="formAdd.get('name').errors?.required && (form.submitted || formAdd.get('name').touched)">
+                Nome da categoria obrigatório
+            </small>
+        </fieldset>
+
+        <fieldset>
+            <button class="btn btn-primary" [disabled]="formAdd.invalid">Cadastrar</button>
+        </fieldset>
+    </form>
+</section>
