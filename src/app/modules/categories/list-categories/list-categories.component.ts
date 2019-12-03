@@ -9,7 +9,8 @@ import { CategoriesInterface } from '../typings/categories-typing.interface';
 })
 export class ListCategoriesComponent implements OnInit {
 
-  cateogories: CategoriesInterface[] = []
+  data: any
+  categories: CategoriesInterface[] = []
 
   constructor(
     private _categorieService: CategoriesService
@@ -17,8 +18,9 @@ export class ListCategoriesComponent implements OnInit {
 
   ngOnInit() {
     this._categorieService.get().subscribe(data => {
-      this.cateogories = data;
-      console.log(this.cateogories);
+      this.data = data;
+      this.categories = this.data.docs
+      console.log(this.categories);
     }, error => {
       console.error(error);
       return error

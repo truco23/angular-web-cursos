@@ -1,3 +1,22 @@
-<ul class="list-group">
-    <li class="list-group-item disabled">Cras justo odio</li>
-</ul>
+<section class="container">
+    <h1 class="jumbotron text-center bg-transparent">Categorias</h1>
+
+    <div class="text-right mb-2">
+        <button class="btn btn-success">Cadastrar</button>
+    </div>
+
+    <ul class="list-group" *ngIf="categories">
+        <li class="list-group-item d-flex justify-content-between" *ngFor="let categorie of categories">
+            <p class="mb-0">{{categorie.name}}</p>
+
+            <div class="d-flex">
+                <span class="p-1 text-info" title="Alterar"><i class="fas fa-1x fa-edit"></i></span>
+                <span class="p-1 text-danger" title="Romover"><i class="fas fa-1x fa-trash-alt"></i></span>
+            </div>
+        </li>
+    </ul>
+
+    <div *ngIf="!categories">
+        <p class="alert alert-info">Ainda não temos nenhuma categoria cadastrada <a>Façã o cadastrado</a> </p>
+    </div>
+</section>
