@@ -25,4 +25,8 @@ export class CategoriesService {
   create(name): Observable<CategoriesInterface> {
     return this._http.post<CategoriesInterface>(`${environment.baseUrl}/categories/`, { name })
   }
+
+  delete(id: string): Observable<Object> {
+    return this._http.delete(`${environment.baseUrl}/categories/${id}`)
+  }
 }

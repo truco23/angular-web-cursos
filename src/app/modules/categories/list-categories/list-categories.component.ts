@@ -12,7 +12,9 @@ export class ListCategoriesComponent implements OnInit {
   data: any
   categories: CategoriesInterface[] = []
   pagesNumber = []
-  somePages: number = 1
+  showMessage: boolean = false
+  messageSuccess: string
+  messageDanger: string
 
   constructor(
     private _categorieService: CategoriesService
@@ -23,16 +25,13 @@ export class ListCategoriesComponent implements OnInit {
     this._categorieService
       .get()
       .subscribe(data => {
-        console.log('data', data);
         
         this.categories = data;
         this.data = data;
 
         for (let i = 1; i < this.data.totalPages + 1; i++) {
-
           this.pagesNumber.push({page: i})
         }
-        console.log('pages', this.pagesNumber);
     }, error => {
       console.error(error);
       return error
@@ -45,10 +44,27 @@ export class ListCategoriesComponent implements OnInit {
 
     this._categorieService
       .pagination(page)
-      .subscribe(data => {
-        this.categories = data,
-        console.log('paginacao', this.categories);
+      .subscribe(data => 
+        this.categories = data, 
+        error => console.error(error)
+      )
+  }
+
+  remove(id): void {
+    
+    this._categorieService
+    .delete(id)
+    .subscribe(() => {
+      
+        const copyCategories: any = this.categories;
+        const indice = copyCategories.docs.findIndex(data => data._id == id)
+        copyCategories.docs.splice(indice, 1)
         
-      }, error => console.error(error))
+        this.messageSuccess = 'Categoria removida'
+      }, error => {
+
+        console.error(error)
+        this.messageDanger = 'Não foi possível remover a categoria'
+      })
   }
 }

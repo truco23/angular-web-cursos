@@ -8,6 +8,10 @@
         <p class="alert alert-warning" *ngIf="!message">{{message}}</p>
     </div>
 
+    <div class="text-right">
+        <a class="btn btn-info mb-2" [routerLink]="[ '/categories']">voltar</a>
+    </div>
+
     <form [formGroup]="formAdd" (submit)="addCategorie($event)" #form="ngForm">
         <fieldset>
             <label for="name">Nome da categoria:</label>
