@@ -1,1 +1,43 @@
-<p>edit-categories works!</p>
+<section class="container">
+        <div class="jumbotron bg-transparent text-center">
+            <h1>Alterar categoria</h1>
+        </div>
+    
+        <div *ngIf="showMessage">
+            <p class="alert alert-success" *ngIf="messageSuccess">{{messageSuccess}}</p>
+            <p class="alert alert-danger" *ngIf="messageDanger">{{messageDanger}}</p>
+        </div>
+    
+        <div class="text-right">
+            <a class="btn btn-info mb-2" [routerLink]="[ '/categories']">voltar</a>
+        </div>
+    
+        <form [formGroup]="formEdit" #form="ngForm" (submit)="update($event)">
+            <fieldset>
+                <label for="name">Nome da categoria:</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-dark text-white">
+                            <i class="fas fa-signature"></i>
+                        </span>
+                    </div>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="name" 
+                        aria-describedby="name" 
+                        formControlName="name" 
+                        [value]="categorie?.name">
+                </div>
+                <small 
+                    class="form-text alert alert-danger form-text mt-0"
+                    *ngIf="formEdit.get('name').errors?.required && (form.submitted || formEdit.get('name').touched)">
+                    Nome da categoria obrigatório
+                </small>
+            </fieldset>
+    
+            <fieldset>
+                <button class="btn btn-primary" [disabled]="formEdit.invalid">Alterar</button>
+            </fieldset>
+        </form>
+    </section>

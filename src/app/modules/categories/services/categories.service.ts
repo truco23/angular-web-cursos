@@ -22,8 +22,16 @@ export class CategoriesService {
     return this._http.get<CategoriesInterface[]>(`${environment.baseUrl}/categories`)
   }
 
+  getById(id: string): Observable<CategoriesInterface> {
+    return this._http.get<CategoriesInterface>(`${ environment.baseUrl }/categories/${id}`)
+  }
+
   create(name): Observable<CategoriesInterface> {
     return this._http.post<CategoriesInterface>(`${environment.baseUrl}/categories/`, { name })
+  }
+
+  put(id: string, name: string): Observable<CategoriesInterface> {
+    return this._http.put<CategoriesInterface>(`${ environment.baseUrl }/categories/${id}`, {name})
   }
 
   delete(id: string): Observable<Object> {
