@@ -52,6 +52,8 @@ export class ListCategoriesComponent implements OnInit {
 
   remove(id): void {
     
+    if(!confirm('Deseja remover essa categoria?')) return
+    
     this._categorieService
     .delete(id)
     .subscribe(() => {
