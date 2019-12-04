@@ -14,6 +14,10 @@ export class CategoriesService {
     private _http: HttpClient
   ) { }
 
+  pagination(page: number = 1, limit: number= 10): Observable<CategoriesInterface[]> {
+    return this._http.get<CategoriesInterface[]>(`${ environment.baseUrl }/categories?page=${page}&limit=${limit}`)
+  }
+  
   get(): Observable<CategoriesInterface[]> {
     return this._http.get<CategoriesInterface[]>(`${environment.baseUrl}/categories`)
   }

@@ -6,7 +6,7 @@
     </div>
 
     <ul class="list-group" *ngIf="categories">
-        <li class="list-group-item d-flex justify-content-between" *ngFor="let categorie of categories">
+        <li class="list-group-item d-flex justify-content-between" *ngFor="let categorie of categories.docs">
             <p class="mb-0">{{categorie.name}}</p>
 
             <div class="d-flex">
@@ -19,4 +19,18 @@
     <div *ngIf="!categories">
         <p class="alert alert-info">Ainda não temos nenhuma categoria cadastrada <a>Façã o cadastrado</a> </p>
     </div>
+
+    <nav aria-label="Page navigation example" *ngIf="categories.totalPages > 1">
+        <ul class="pagination justify-content-center mt-2 mb-2">
+            <li class="page-item" disabled="categories.prevPage">
+                <a class="page-link text-dark" (click)="pagination(categories.prevPage)"><i class="fas fa-arrow-left"></i></a>
+            </li>
+            <li class="page-item" *ngFor="let pages of pagesNumber">
+                <a class="page-link text-dark" (click)="pagination(pages.page)">{{pages.page}}</a>
+            </li>
+            <li class="page-item" disabled="categories.nextPage">
+                <a class="page-link text-dark" (click)="pagination(categories.nextPage)"><i class="fas fa-arrow-right"></i></a>
+            </li>
+        </ul>
+    </nav>
 </section>
