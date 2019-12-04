@@ -17,4 +17,8 @@ export class CategoriesService {
   get(): Observable<CategoriesInterface[]> {
     return this._http.get<CategoriesInterface[]>(`${environment.baseUrl}/categories`)
   }
+
+  create(name): Observable<CategoriesInterface> {
+    return this._http.post<CategoriesInterface>(`${environment.baseUrl}/categories/`, { name })
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { CategoriesService } from '../services/categories.service';
 
 @Component({
   selector: 'app-add-categories',
@@ -9,9 +10,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 export class AddCategoriesComponent implements OnInit {
 
   formAdd: FormGroup;
+  showMessage: boolean = false;
+  message: string;
 
   constructor(
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private _categorieService: CategoriesService
   ) { }
 
   ngOnInit(): void {
@@ -31,7 +35,22 @@ export class AddCategoriesComponent implements OnInit {
     e.preventDefault();
 
     const {name} = this.formAdd.getRawValue()
-    console.log('cadastro', name);
+
+    this._categorieService
+      .create(name)
+      .subscribe(data => {
+        
+        this.showMessage = true;
+
+        if(data) {
+          
+          this.formAdd.reset()
+          this.message = 'Categoria criada com sucesso';
+          return;
+        }
+
+        this.message = 'Não foi possível criar a categoria'
+      }, error => console.log(error))
     
   }
 }

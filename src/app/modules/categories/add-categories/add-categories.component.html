@@ -3,6 +3,11 @@
         <h1>Cadastro de categoria</h1>
     </div>
 
+    <div *ngIf="showMessage">
+        <p class="alert alert-success" *ngIf="message">{{message}}</p>
+        <p class="alert alert-warning" *ngIf="!message">{{message}}</p>
+    </div>
+
     <form [formGroup]="formAdd" (submit)="addCategorie($event)" #form="ngForm">
         <fieldset>
             <label for="name">Nome da categoria:</label>
