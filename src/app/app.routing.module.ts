@@ -13,6 +13,10 @@ const appRoutes: Routes = [
     {
         path: 'categories/add',
         loadChildren: () => import('./modules/categories/add-categories/add-categories.module').then(m => m.AddCategoriesModule)
+    },
+    {
+        path: 'categories/edit/:id',
+        loadChildren: () => import('./modules/categories/edit-categories/edit-categories.module').then(m => m.EditCategoriesModule)
     }
 ]
 

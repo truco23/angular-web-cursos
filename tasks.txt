@@ -1,7 +1,5 @@
 Tela categorias
-    - cadastro
     - alteração
-    - remoção
 
 Tela cursos
     - listagem
