@@ -1,8 +1,6 @@
 <section class="container">
-    <div class="jumbotron bg-transparent text-center">
-        <h1>Cadastro de categoria</h1>
-    </div>
-
+    <app-jumbotron title="Cadastro categoria" bg="bg-transparent"></app-jumbotron>
+    
     <div *ngIf="showMessage">
         <p class="alert alert-success" *ngIf="message">{{message}}</p>
         <p class="alert alert-warning" *ngIf="!message">{{message}}</p>

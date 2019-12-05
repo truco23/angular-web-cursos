@@ -1,8 +1,6 @@
 <section class="container">
-        <div class="jumbotron bg-transparent text-center">
-            <h1>Alterar categoria</h1>
-        </div>
-    
+        <app-jumbotron title="Alterar categoria" bg="bg-transparent"></app-jumbotron>
+        
         <div *ngIf="showMessage">
             <p class="alert alert-success" *ngIf="messageSuccess">{{messageSuccess}}</p>
             <p class="alert alert-danger" *ngIf="messageDanger">{{messageDanger}}</p>
