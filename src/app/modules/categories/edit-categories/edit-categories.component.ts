@@ -15,7 +15,6 @@ export class EditCategoriesComponent implements OnInit {
   formEdit: FormGroup
   idCategorie: string
   categorie: CategoriesInterface
-  showMessage: boolean = false
   messageSuccess: string
   messageDanger: string
 
@@ -59,7 +58,6 @@ export class EditCategoriesComponent implements OnInit {
       .put(this.idCategorie, name)
       .subscribe(res => {
 
-        this.showMessage = true
         this.messageSuccess = 'Categoria alterada'
 
         if(confirm('Alteração realizada, Deseja fazer outra alteração')) {return}
@@ -67,7 +65,6 @@ export class EditCategoriesComponent implements OnInit {
         this._router.navigate(['categories'])
       }, error => {
         console.error(error)
-        this.showMessage = true
         this.messageDanger = 'Não foi possível alterar a categoria'
       })
   }

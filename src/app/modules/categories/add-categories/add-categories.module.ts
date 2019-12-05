@@ -5,6 +5,7 @@ import { AddCategoriesComponent } from './add-categories.component';
 import { AddCategoriesRoutingModule } from './add-categories.routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { JumbotronModule } from '../../shared/jumbotron/jumbotron.module';
+import { MessageModule } from '../../shared/message/message.module';
 
 @NgModule({
   declarations: [AddCategoriesComponent],
@@ -12,6 +13,7 @@ import { JumbotronModule } from '../../shared/jumbotron/jumbotron.module';
     CommonModule,
     ReactiveFormsModule,
     JumbotronModule,
+    MessageModule,
     AddCategoriesRoutingModule
   ],
   exports: [AddCategoriesComponent]

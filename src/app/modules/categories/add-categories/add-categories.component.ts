@@ -10,8 +10,8 @@ import { CategoriesService } from '../services/categories.service';
 export class AddCategoriesComponent implements OnInit {
 
   formAdd: FormGroup;
-  showMessage: boolean = false;
-  message: string;
+  messageSuccess: string
+  messageDanger: string
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -40,16 +40,14 @@ export class AddCategoriesComponent implements OnInit {
       .create(name)
       .subscribe(data => {
         
-        this.showMessage = true;
-
         if(data) {
           
           this.formAdd.reset()
-          this.message = 'Categoria criada com sucesso';
+          this.messageSuccess = 'Categoria criada com sucesso';
           return;
         }
 
-        this.message = 'Não foi possível criar a categoria'
+        this.messageDanger = 'Não foi possível criar a categoria'
       }, error => console.log(error))
     
   }

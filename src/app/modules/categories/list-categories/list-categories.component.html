@@ -1,11 +1,12 @@
 <section class="container">
     <app-jumbotron title="Categorias" bg="bg-transparent"></app-jumbotron>
 
-    <div>
-        <p class="alert alert-success" *ngIf="messageSuccess">{{messageSuccess}}</p>
-        <p class="alert alert-danger" *ngIf="messageDanger">{{messageDanger}}</p>
-    </div>
-
+    <app-message
+        [success]="messageSuccess"
+        [danger]="messageDanger"
+    >
+    </app-message>
+    
     <div class="text-right mb-2">
         <a class="btn btn-success" [routerLink]="['add']">Cadastrar</a>
     </div>

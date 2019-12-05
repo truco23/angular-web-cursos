@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { EditCategoriesComponent } from './edit-categories.component';
 import { EditCategoriesRoutingModule } from './edit-categories.routing.module';
 import { JumbotronModule } from '../../shared/jumbotron/jumbotron.module';
+import { MessageModule } from '../../shared/message/message.module';
 
 @NgModule({
   declarations: [EditCategoriesComponent],
@@ -12,6 +13,7 @@ import { JumbotronModule } from '../../shared/jumbotron/jumbotron.module';
     CommonModule,
     ReactiveFormsModule,
     JumbotronModule,
+    MessageModule,
     EditCategoriesRoutingModule
   ],
   exports: [EditCategoriesComponent]

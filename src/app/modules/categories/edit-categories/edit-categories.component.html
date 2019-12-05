@@ -1,11 +1,12 @@
 <section class="container">
         <app-jumbotron title="Alterar categoria" bg="bg-transparent"></app-jumbotron>
         
-        <div *ngIf="showMessage">
-            <p class="alert alert-success" *ngIf="messageSuccess">{{messageSuccess}}</p>
-            <p class="alert alert-danger" *ngIf="messageDanger">{{messageDanger}}</p>
-        </div>
-    
+        <app-message
+            [success]="messageSuccess"
+            [danger]="messageDanger"
+        >
+        </app-message>
+        
         <div class="text-right">
             <a class="btn btn-info mb-2" [routerLink]="[ '/categories']">voltar</a>
         </div>
