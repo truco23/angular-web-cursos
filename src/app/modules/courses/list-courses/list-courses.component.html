@@ -1,1 +1,52 @@
-<p>list-courses works!</p>
+<section class="container">
+    <app-jumbotron title="Categorias" bg="bg-transparent"></app-jumbotron>
+
+    <app-message>
+    </app-message>
+
+    <div class="text-right mb-2">
+        <a class="btn btn-success" [routerLink]="['add']">Cadastrar</a>
+    </div>
+
+    <ul class="list-group" *ngIf="courses">
+        <div class="card mt-1" *ngFor="let course of courses.docs">
+            <div class="p-3">
+                <h5 class="card-title">{{course.name}}</h5>
+                <div class="d-flex justify-content-between">
+                    <p class="card-text">{{course.description}}</p>
+                    <div>
+                        <a class="text-info" title="Alterar">
+                            <i class="fas fa-1x fa-edit"></i>
+                        </a>
+                        <a class="p-1 text-danger" title="Romover">
+                            <i class="fas fa-1x fa-trash-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ul>
+
+    <div *ngIf="!courses">
+        <p class="alert alert-info">Ainda não temos nenhuma categoria cadastrada <a [routerLink]="['add']">Faço o
+                cadastrado</a> </p>
+    </div>
+
+    <nav aria-label="Page navigation example" *ngIf="courses.totalPages > 1">
+        <ul class="pagination justify-content-center mt-2 mb-2">
+            <li class="page-item" disabled="">
+                <a class="page-link text-dark">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link text-dark">pagina</a>
+            </li>
+            <li class="page-item" disabled="">
+                <a class="page-link text-dark">
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</section>
