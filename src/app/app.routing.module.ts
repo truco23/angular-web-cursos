@@ -17,6 +17,10 @@ const appRoutes: Routes = [
     {
         path: 'categories/edit/:id',
         loadChildren: () => import('./modules/categories/edit-categories/edit-categories.module').then(m => m.EditCategoriesModule)
+    },
+    {
+        path: 'courses',
+        loadChildren: () => import('./modules/courses/list-courses/list-courses.module').then(m => m.ListCoursesModule)
     }
 ]
 
