@@ -21,6 +21,10 @@ const appRoutes: Routes = [
     {
         path: 'courses',
         loadChildren: () => import('./modules/courses/list-courses/list-courses.module').then(m => m.ListCoursesModule)
+    },
+    {
+        path: 'courses/add',
+        loadChildren: () => import('./modules/courses/add-courses/add-courses.module').then(m => m.AddCoursesModule)
     }
 ]
 
