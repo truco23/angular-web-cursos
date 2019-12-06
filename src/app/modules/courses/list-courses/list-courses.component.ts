@@ -14,6 +14,7 @@ export class ListCoursesComponent implements OnInit {
   courses: CourseInterface[] = []
   messageSuccess: string
   messageDanger: string
+  pagesNumber = []
 
   constructor(
     private _courseService: CourseService
@@ -23,12 +24,32 @@ export class ListCoursesComponent implements OnInit {
 
     this._courseService
       .get()
-      .subscribe(course => {
+      .subscribe(data => {
 
-        this.data = course
+        this.data = data
         this.courses = this.data.result
-        console.log(this.courses);
         
+        for (let i = 1; i < this.data.result.totalPages + 1; i++) {
+          this.pagesNumber.push({ page: i })
+        }
+        
+        console.log('cursos',this.courses);
+        console.log('paginas', this.pagesNumber);
+        
+        
+      }, error => console.log(error))
+  }
+
+  pagination(page: number) {
+
+    if(!page) return
+
+    this._courseService
+      .pagination(page)
+      .subscribe(data => {
+        
+        this.data = data
+        this.courses = this.data.result
       }, error => console.log(error))
   }
 

@@ -13,6 +13,10 @@ export class CourseService {
     private _http: HttpClient
   ) { }
 
+  pagination(page: number = 1, limit: number = 10): Observable<CourseInterface[]> {
+    return this._http.get<CourseInterface[]>(`${ environment.baseUrl }/courses?page=${page}&limit=${limit}`)
+  }
+
   get(): Observable<CourseInterface[]> {
     return this._http.get<CourseInterface[]>(`${ environment.baseUrl }/courses`)
   }

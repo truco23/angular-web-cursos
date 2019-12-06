@@ -1,5 +1,3 @@
 Tela cursos
     - listagem
-    - cadastro
     - alteração
-    - remoção

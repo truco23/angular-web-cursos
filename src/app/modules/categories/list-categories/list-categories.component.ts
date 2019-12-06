@@ -21,47 +21,47 @@ export class ListCategoriesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    
+
     this._categorieService
       .get()
       .subscribe(data => {
-        
+
         this.categories = data;
         this.data = data;
 
         for (let i = 1; i < this.data.totalPages + 1; i++) {
-          this.pagesNumber.push({page: i})
+          this.pagesNumber.push({ page: i })
         }
-    }, error => {
-      console.error(error);
-      return error
-    })
+      }, error => {
+        console.error(error);
+        return error
+      })
   }
 
   pagination(page: number) {
-    
-    if(!page) return
+
+    if (!page) return
 
     this._categorieService
       .pagination(page)
-      .subscribe(data => 
-        this.categories = data, 
+      .subscribe(data =>
+        this.categories = data,
         error => console.error(error)
       )
   }
 
   remove(id): void {
-    
-    if(!confirm('Deseja remover essa categoria?')) return
-    
+
+    if (!confirm('Deseja remover essa categoria?')) return
+
     this._categorieService
-    .delete(id)
-    .subscribe(() => {
-      
+      .delete(id)
+      .subscribe(() => {
+
         const copyCategories: any = this.categories;
         const indice = copyCategories.docs.findIndex(data => data._id == id)
         copyCategories.docs.splice(indice, 1)
-        
+
         this.messageSuccess = 'Categoria removida'
       }, error => {
 
