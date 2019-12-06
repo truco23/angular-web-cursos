@@ -25,6 +25,10 @@ const appRoutes: Routes = [
     {
         path: 'courses/add',
         loadChildren: () => import('./modules/courses/add-courses/add-courses.module').then(m => m.AddCoursesModule)
+    },
+    {
+        path: 'courses/edit/:id',
+        loadChildren: () => import('./modules/courses/edit-courses/edit-courses.module').then(m => m.EditCoursesModule)
     }
 ]
 

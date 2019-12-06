@@ -18,7 +18,7 @@
                 <div class="d-flex justify-content-between">
                     <p class="card-text">{{course.description}}</p>
                     <div>
-                        <a class="text-info" title="Alterar">
+                        <a class="text-info" title="Alterar" [routerLink]="['edit', course._id]">
                             <i class="fas fa-1x fa-edit"></i>
                         </a>
                         <a class="p-1 text-danger" title="Romover" (click)="delete(course._id)">
