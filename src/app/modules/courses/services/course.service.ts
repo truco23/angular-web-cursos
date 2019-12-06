@@ -20,4 +20,8 @@ export class CourseService {
   create(idCategory, name, description): Observable<CourseInterface> {
     return this._http.post<CourseInterface>(`${ environment.baseUrl }/courses`, {idCategory, name, description})
   }
+
+  delete(id: string): Observable<Object> {
+    return this._http.delete(`${ environment.baseUrl }/courses/${ id }`)
+  }
 }

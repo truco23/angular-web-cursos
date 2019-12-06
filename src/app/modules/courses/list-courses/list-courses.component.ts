@@ -12,6 +12,8 @@ export class ListCoursesComponent implements OnInit {
 
   data: any
   courses: CourseInterface[] = []
+  messageSuccess: string
+  messageDanger: string
 
   constructor(
     private _courseService: CourseService
@@ -30,4 +32,23 @@ export class ListCoursesComponent implements OnInit {
       }, error => console.log(error))
   }
 
+  delete(id: string): void {
+
+    if(confirm('Deseja remover esse curso')) {
+
+      this._courseService
+        .delete(id)
+        .subscribe(() => {
+
+          const coursesCopy: any = this.courses
+          const indice = coursesCopy.docs.findIndex(data => data._id === id)
+
+          this.messageSuccess = 'Categoria removida'
+          coursesCopy.docs.splice(indice, 1)
+        }, error => {
+          console.error(error)
+          this.messageDanger = 'Não foi possível remover a categoria'
+        })
+    }
+  }
 }

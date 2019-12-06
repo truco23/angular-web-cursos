@@ -1,14 +1,17 @@
 <section class="container">
     <app-jumbotron title="Categorias" bg="bg-transparent"></app-jumbotron>
 
-    <app-message>
+    <app-message
+        [success]="messageSuccess"
+        [danger]="messageDanger"
+    >
     </app-message>
 
     <div class="text-right mb-2">
         <a class="btn btn-success" [routerLink]="['add']">Cadastrar</a>
     </div>
 
-    <ul class="list-group" *ngIf="courses">
+    <div class="list-group" *ngIf="courses">
         <div class="card mt-1" *ngFor="let course of courses.docs">
             <div class="p-3">
                 <h5 class="card-title">{{course.name}}</h5>
@@ -18,14 +21,14 @@
                         <a class="text-info" title="Alterar">
                             <i class="fas fa-1x fa-edit"></i>
                         </a>
-                        <a class="p-1 text-danger" title="Romover">
+                        <a class="p-1 text-danger" title="Romover" (click)="delete(course._id)">
                             <i class="fas fa-1x fa-trash-alt"></i>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
-    </ul>
+    </div>
 
     <div *ngIf="!courses">
         <p class="alert alert-info">Ainda não temos nenhuma categoria cadastrada <a [routerLink]="['add']">Faço o
