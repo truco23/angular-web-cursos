@@ -104,15 +104,20 @@ export class EditCoursesComponent implements OnInit {
 
     e.preventDefault()
 
-    let {name, description} = this.formEdit.value
+    
+    if(confirm('Deseja confirmar essa alteração')) {
+      
+      const {idCategory, name, description} = this.formEdit.value
 
-    this._couseService
-      .put(this.idCourse, name, description)
-      .subscribe(data => {
+      this._couseService
+      .put(this.idCourse, idCategory, name, description)
+      .subscribe(() => {
 
-        if(confirm('Deseja alterar novamente este curso?')) return
-        this._router.navigate(['/courses'])
-      }, error => console.error(error))
+          alert('Curso alterado')
+          this._router.navigate(['/courses'])
+        }, error => console.error(error))
+    }
+    
   }
 
 }

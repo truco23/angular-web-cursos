@@ -29,8 +29,8 @@ export class CourseService {
     return this._http.post<CourseInterface>(`${ environment.baseUrl }/courses`, {idCategory, name, description})
   }
 
-  put(id, name, description): Observable<CourseInterface> {
-    return this._http.put<CourseInterface>(`${ environment.baseUrl }/courses/${id}`, {name, description})
+  put(id: string, idCategory: string, name: string, description: string): Observable<CourseInterface> {
+    return this._http.put<CourseInterface>(`${ environment.baseUrl }/courses/${id}`, {idCategory, name, description})
   }
 
   delete(id: string): Observable<Object> {

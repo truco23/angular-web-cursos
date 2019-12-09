@@ -14,10 +14,13 @@
     <div class="list-group" *ngIf="courses">
         <div class="card mt-1" *ngFor="let course of courses.docs">
             <div class="p-3">
-                <h5 class="card-title">{{course.name}}</h5>
+                <header class="d-flex justify-content-between">
+                    <h5 class="card-title">{{course.name}}</h5>
+                    <p class="badge badge-info">{{ course.idCategory.name }}</p>
+                </header>
                 <div class="d-flex justify-content-between">
                     <p class="card-text">{{course.description}}</p>
-                    <div>
+                    <div class="list-courses-icons">
                         <a class="text-info" title="Alterar" [routerLink]="['edit', course._id]">
                             <i class="fas fa-1x fa-edit"></i>
                         </a>
