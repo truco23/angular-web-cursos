@@ -1,1 +1,90 @@
-<p>edit-courses works!</p>
+<section class="container">
+
+    <app-jumbotron title="Alterar curso" bg="bg-transparent"></app-jumbotron>
+
+    <app-message
+        [success]=""
+        [danger]=""
+    >
+    </app-message>
+
+    <div class="text-right">
+        <a class="btn btn-info" [routerLink]="['/courses']">voltar</a>
+    </div>
+
+    <form [formGroup]="formEdit" #form="ngForm" (submit)="update($event)">
+        <fieldset>
+            <div class="form-group">
+                <label for="categorie">Selecione uma categoria</label>
+                <select name="categorie" id="categorie" class="form-control custom-select" formControlName="idCategory">
+                    <option value="">Selecione uma categoria</option>
+                    <option [value]="categorie._id" *ngFor="let categorie of categories" [selected]="categorie.name === course?.idCategory.name">{{categorie.name}}</option>
+                </select>
+
+                <small 
+                    class="form-text alert alert-danger form-text mt-0" 
+                    *ngIf="formEdit.get('idCategory').errors?.required && (form.submitted || formEdit.get('idCategory').touched)">
+                    Categoria obrigatório
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Nome do curso:</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-dark text-white">
+                            <i class="fas fa-signature"></i>
+                        </span>
+                    </div>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="name" 
+                        aria-describedby="name"
+                        placeholder="Nome do curso"
+                        formControlName="name"
+                        [value]="course?.name">
+                </div>
+                <small 
+                    class="form-text alert alert-danger form-text mt-0" 
+                    *ngIf="formEdit.get('name').errors?.required && (form.submitted || formEdit.get('name').touched)">
+                    Nome curso obrigatório
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label for="desc">Descrição do curso:</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-dark text-white">
+                            <i class="fas fa-signature"></i>
+                        </span>
+                    </div>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="desc" 
+                        aria-describedby="desc"
+                        placeholder="Descrição do curso"
+                        formControlName="description"
+                        [value]="course?.description">
+                </div>
+                <small 
+                    class="form-text alert alert-danger form-text mt-0"
+                    *ngIf="formEdit.get('description').errors?.required && (form.submitted || formEdit.get('description').touched)">
+                    Descrição curso obrigatório
+                </small>
+
+                <small 
+                    class="form-text alert alert-danger form-text mt-0"
+                    *ngIf="formEdit.get('description').errors?.maxlegnth">
+                    O campo deve conter menos de 50 caracteres
+                </small>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <button class="btn btn-primary" [disabled]="formEdit.invalid">Alterar</button>
+        </fieldset>
+    </form>
+</section>

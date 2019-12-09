@@ -22,6 +22,10 @@ export class CategoriesService {
     return this._http.get<CategoriesInterface[]>(`${environment.baseUrl}/categories`)
   }
 
+  getAll(): Observable<CategoriesInterface[]> {
+    return this._http.get<CategoriesInterface[]>(`${ environment.baseUrl }/categories/all`)
+  }
+
   getById(id: string): Observable<CategoriesInterface> {
     return this._http.get<CategoriesInterface>(`${ environment.baseUrl }/categories/${id}`)
   }

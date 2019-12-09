@@ -1,3 +1,1 @@
-Tela cursos
-    - alteração
-    - ajuste select cursos(categoria)
+Criar sistema de modais para remover o confirm

@@ -1,7 +1,7 @@
 export interface CourseInterface {
     id: string;
     idCategory: {
-        id: string,
+        _id: string,
         name: string
     };
     name: string;

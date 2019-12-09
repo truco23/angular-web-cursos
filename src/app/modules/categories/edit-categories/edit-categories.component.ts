@@ -42,9 +42,12 @@ export class EditCategoriesComponent implements OnInit {
       .getById(this.idCategorie)
       .subscribe(data => {
 
+        const dados = this.formEdit.getRawValue()
         let result: any
         result = data
         this.categorie = result.categorie[0]
+        console.log('dados', dados);
+        
       }, error => console.error(error))
   }
 
