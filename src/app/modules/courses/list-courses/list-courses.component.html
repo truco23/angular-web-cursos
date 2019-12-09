@@ -1,18 +1,31 @@
 <section class="container">
     <app-jumbotron title="Categorias" bg="bg-transparent"></app-jumbotron>
 
-    <app-message
-        [success]="messageSuccess"
-        [danger]="messageDanger"
-    >
+    <app-message [success]="messageSuccess" [danger]="messageDanger">
     </app-message>
 
     <div class="text-right mb-2">
         <a class="btn btn-success" [routerLink]="['add']">Cadastrar</a>
     </div>
 
+    <form>
+        <div class="form-group">
+            <label for="categoryCoruse">Selecionar uma categoria para filtrar</label>
+            <select class="form-control" id="categoryCoruse" name="categoryCoruse"
+                (change)="filterCategory($event.target.value)">
+                <option value="">Selecione uma categoria</option>
+                <option [value]="categorie.name.trim().toLowerCase()" *ngFor="let categorie of categories">
+                    {{categorie.name}}</option>
+            </select>
+        </div>
+    </form>
+
     <div class="list-group" *ngIf="courses">
-        <div class="card mt-1" *ngFor="let course of courses.docs">
+        <div class="alert alert-info" *ngIf="!courses.length">
+            <p>Não temos curso cadastrado com essa categoria</p>
+        </div>
+
+        <div class="card mt-1" *ngFor="let course of courses">
             <div class="p-3">
                 <header class="d-flex justify-content-between">
                     <h5 class="card-title">{{course.name}}</h5>
