@@ -1,4 +1,4 @@
-<section class="bg-info text-center text-white home-absoulte">
+<section class="bg-dark text-center text-white home-absoulte">
     <div class="icon-centered p-2">
         <!-- <i class="fa-10x fas fa-globe"></i> -->
         <form [formGroup]="formLogin" #form="ngForm" (submit)="login($event)">
@@ -21,6 +21,12 @@
                             class="form-text alert alert-danger form-text mt-0"
                             *ngIf="formLogin.get('name').errors?.minlength">
                             No mínino 2 caracteres
+                        </small>
+
+                        <small
+                            class="form-text alert alert-danger form-text mt-0"
+                            *ngIf="formLogin.get('name').errors?.maxlength">
+                            No máximo 10 caracteres
                         </small>
                 </div>
 

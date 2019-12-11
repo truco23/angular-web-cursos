@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MenuService } from 'src/app/modules/shared/services/menu.service';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _router: Router
+    private _router: Router,
+    private _menuService: MenuService
   ) { }
 
   ngOnInit() {
@@ -23,7 +25,8 @@ export class HomeComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.minLength(2)
+          Validators.minLength(2),
+          Validators.maxLength(10)
         ]
       ]
     })
@@ -35,9 +38,8 @@ export class HomeComponent implements OnInit {
 
     const {name} = this.formLogin.value
 
-    console.log('login', name);
-    
-    window.localStorage.setItem('keyCursos', name)
+    this._menuService.setLocalStorage(name)
+    this._menuService.userEmitted(name)
     this._router.navigate(['main'])
   }
 }
