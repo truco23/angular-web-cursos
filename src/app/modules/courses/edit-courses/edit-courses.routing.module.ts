@@ -2,11 +2,15 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from '@angular/router';
 
 import { EditCoursesComponent } from './edit-courses.component';
+import { LoginGuard } from '../../shared/guards/login.guard';
 
 const editCoursesRoutes: Routes = [
     {
         path: '',
-        component: EditCoursesComponent
+        component: EditCoursesComponent,
+        canActivate: [
+            LoginGuard
+        ]
     }
 ]
 

@@ -1,5 +1,1 @@
 - criar sistema de modais para remover o confirm
-
-- criar tela de login
-    - login
-    - logout
