@@ -1,3 +1,5 @@
-- criar filtro para a listagem de cursos (por categoria)
-
 - criar sistema de modais para remover o confirm
+
+- criar tela de login
+    - login
+    - logout
