@@ -1,0 +1,14 @@
+.menu-info-user {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    max-width: 280px;
+    width: 100%;
+    transition: all .5s ease-in-out;
+}
+
+.menu-info-hide {
+    right: -999px;
+    transition: all .5s ease-in-out;
+}

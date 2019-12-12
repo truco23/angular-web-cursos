@@ -11,6 +11,7 @@ export class MenuComponent implements OnInit {
 
   user: Object
   userLocalStorage: Object
+  menu: boolean = false
 
   constructor(
     private _menuService: MenuService,
@@ -30,5 +31,11 @@ export class MenuComponent implements OnInit {
   logout(): void {
     this._menuService.clearStorage()
     this._router.navigate([''])
+  }
+
+  menuToogle(e: Event): void {
+
+    e.preventDefault()
+    this.menu = !this.menu
   }
 }

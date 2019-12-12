@@ -3,20 +3,31 @@
         <i class="fab fa-phoenix-framework"></i>
     </a>
     <ul class="list-unstyled mb-0 d-flex">
-        <li class="nav-item">
-            <a class="text-white p-1" [routerLink]="['/main/categories']">Categorias</a>
-        </li>
-        <li class="nav-item">
-            <a class="text-white p-1" [routerLink]="['/main/courses']">Cursos</a>
-        </li>
         <li class="nav-item" *ngIf="user">
-            <a class="text-white p-1">
-                <span>
-                    {{user}}
-                    <i class="fas fa-user"></i>
-                </span>
-                <small class="p-1" (click)="logout()">sair</small>
+            <a class="text-white" (click)="menuToogle($event)">
+                <i class="fas fa-bars"></i>
             </a>
         </li>
     </ul>
 </nav>
+
+<ul class="list-unstyled bg-dark menu-info-user text-right mb-0" [ngClass]="{'menu-info-hide': !menu}">
+    <li class="nav-item d-flex justify-content-between mb-2 p-2" *ngIf="user">
+        <span class="text-white">
+            {{user}}
+            <i class="fas fa-user bg-white p-1 rounded-circle text-dark"></i>
+        </span>
+        <a class="text-white" (click)="menuToogle($event)">
+            <i class="fas fa-bars"></i>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="text-white p-1 nav-link" [routerLink]="['/main/categories']">Categorias</a>
+    </li>
+    <li class="nav-item">
+        <a class="text-white p-1 nav-link" [routerLink]="['/main/courses']">Cursos</a>
+    </li>
+    <li class="nav-item">
+        <a href="" class="text-white p-1 nav-link" (click)="logout()">Sair</a>
+    </li>
+</ul>
