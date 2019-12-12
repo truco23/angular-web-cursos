@@ -1,3 +1,7 @@
 .list-courses-icons {
     min-width: 40px;
 }
+
+.list-course-card {
+    min-height: 130px;
+}

@@ -12,72 +12,81 @@
         <a class="btn btn-info" [routerLink]="['/main/courses']">voltar</a>
     </div>
 
-    <form [formGroup]="formAdd" #form="ngForm" (submit)="create($event)">
-        <fieldset>
-            <div class="form-group">
-                <label for="categorie">Selecione uma categoria</label>
-                <select name="categorie" id="categorie" class="form-control custom-select" formControlName="idCategory">
-                    <option value="">Selecione uma categoria</option>
-                    <option [value]="categorie._id" *ngFor="let categorie of categories">{{categorie.name}}</option>
-                </select>
-
-                <small 
-                    class="form-text alert alert-danger form-text mt-0" 
-                    *ngIf="formAdd.get('idCategory').errors?.required && (form.submitted || formAdd.get('idCategory').touched)">
-                    Categoria obrigatório
-                </small>
+    <form
+        [formGroup]="formAdd" 
+        #form="ngForm" 
+        (submit)="create($event)"
+    >
+        <fieldset class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="categorie">Selecione uma categoria</label>
+                    <select name="categorie" id="categorie" class="form-control custom-select" formControlName="idCategory">
+                        <option value="">Selecione uma categoria</option>
+                        <option [value]="categorie._id" *ngFor="let categorie of categories">{{categorie.name}}</option>
+                    </select>
+    
+                    <small 
+                        class="form-text alert alert-danger form-text mt-0" 
+                        *ngIf="formAdd.get('idCategory').errors?.required && (form.submitted || formAdd.get('idCategory').touched)">
+                        Categoria obrigatório
+                    </small>
+                </div>
+    
+                <div class="form-group">
+                    <label for="name">Nome do curso:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-dark text-white">
+                                <i class="fas fa-signature"></i>
+                            </span>
+                        </div>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            id="name" 
+                            aria-describedby="name"
+                            placeholder="Nome do curso"
+                            formControlName="name">
+                    </div>
+                    <small 
+                        class="form-text alert alert-danger form-text mt-0" 
+                        *ngIf="formAdd.get('name').errors?.required && (form.submitted || formAdd.get('name').touched)">
+                        Nome curso obrigatório
+                    </small>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="name">Nome do curso:</label>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text bg-dark text-white">
-                            <i class="fas fa-signature"></i>
-                        </span>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="desc">Descrição do curso:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-dark text-white">
+                                <i class="fas fa-signature"></i>
+                            </span>
+                        </div>
+                        <textarea 
+                            type="text" 
+                            class="form-control" 
+                            id="desc" 
+                            aria-describedby="desc"
+                            placeholder="Descrição do curso"
+                            formControlName="description">
+                        </textarea>
                     </div>
-                    <input 
-                        type="text" 
-                        class="form-control" 
-                        id="name" 
-                        aria-describedby="name"
-                        placeholder="Nome do curso"
-                        formControlName="name">
+                    <small 
+                        class="form-text alert alert-danger form-text mt-0"
+                        *ngIf="formAdd.get('description').errors?.required && (form.submitted || formAdd.get('description').touched)">
+                        Descrição curso obrigatório
+                    </small>
+    
+                    <small 
+                        class="form-text alert alert-danger form-text mt-0"
+                        *ngIf="formAdd.get('description').errors?.maxlength">
+                        O campo deve conter menos de 50 caracteres
+                    </small>
                 </div>
-                <small 
-                    class="form-text alert alert-danger form-text mt-0" 
-                    *ngIf="formAdd.get('name').errors?.required && (form.submitted || formAdd.get('name').touched)">
-                    Nome curso obrigatório
-                </small>
-            </div>
-
-            <div class="form-group">
-                <label for="desc">Descrição do curso:</label>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text bg-dark text-white">
-                            <i class="fas fa-signature"></i>
-                        </span>
-                    </div>
-                    <input 
-                        type="text" 
-                        class="form-control" 
-                        id="desc" 
-                        aria-describedby="desc"
-                        placeholder="Descrição do curso"
-                        formControlName="description">
-                </div>
-                <small 
-                    class="form-text alert alert-danger form-text mt-0"
-                    *ngIf="formAdd.get('description').errors?.required && (form.submitted || formAdd.get('description').touched)">
-                    Descrição curso obrigatório
-                </small>
-
-                <small 
-                    class="form-text alert alert-danger form-text mt-0"
-                    *ngIf="formAdd.get('description').errors?.maxlength">
-                    O campo deve conter menos de 50 caracteres
-                </small>
             </div>
         </fieldset>
 
