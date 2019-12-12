@@ -3,15 +3,20 @@ import { CommonModule } from '@angular/common';
 
 import { MainComponent } from './main.component';
 import { MainRoutingModule } from './main.routing.module';
+import { CardMainComponent } from './card-main/card-main.component';
 
 @NgModule({
-  declarations: [MainComponent],
+  declarations: [
+    MainComponent,
+    CardMainComponent
+  ],
   imports: [
     CommonModule,
     MainRoutingModule
   ],
   exports: [
-    MainComponent
+    MainComponent,
+    CardMainComponent
   ]
 })
 export class MainModule { }

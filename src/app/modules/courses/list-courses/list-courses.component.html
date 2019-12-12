@@ -4,7 +4,8 @@
     <app-message [success]="messageSuccess" [danger]="messageDanger">
     </app-message>
 
-    <div class="text-right mb-2">
+    <div class="text-right mb-2 d-flex justify-content-between mb-4">
+        <a class="btn btn-info" [routerLink]="['/main']">Voltar</a>
         <a class="btn btn-success" [routerLink]="['add']">Cadastrar</a>
     </div>
 

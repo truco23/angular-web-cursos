@@ -6,6 +6,7 @@
     max-width: 280px;
     width: 100%;
     transition: all .5s ease-in-out;
+    z-index: 1;
 }
 
 .menu-info-hide {
