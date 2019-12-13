@@ -68,12 +68,14 @@ export class ListCoursesComponent implements OnInit {
         .subscribe(() => {
 
           const coursesCopy: any = this.courses
-          const indice = coursesCopy.docs.findIndex(data => data._id === id)
+          const indice = coursesCopy.findIndex(data => data._id === id)
 
-          this.messageSuccess = 'Categoria removida'
-          coursesCopy.docs.splice(indice, 1)
+          this.messageSuccess = 'Curso removido'
+          this.messageDanger = ''
+          coursesCopy.splice(indice, 1)
         }, error => {
           console.error(error)
+          this.messageSuccess = ''
           this.messageDanger = 'Não foi possível remover a categoria'
         })
     }

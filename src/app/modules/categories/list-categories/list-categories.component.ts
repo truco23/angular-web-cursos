@@ -56,16 +56,26 @@ export class ListCategoriesComponent implements OnInit {
 
     this._categorieService
       .delete(id)
-      .subscribe(() => {
+      .subscribe((data: any) => {
 
         const copyCategories: any = this.categories;
         const indice = copyCategories.docs.findIndex(data => data._id == id)
+
+        if(data.message) {
+          
+          console.log('data', data);
+          this.messageDanger = data.message
+          return
+        }
+        
         copyCategories.docs.splice(indice, 1)
 
         this.messageSuccess = 'Categoria removida'
+        this.messageDanger = ''
       }, error => {
 
         console.error(error)
+        this.messageSuccess = ''
         this.messageDanger = 'Não foi possível remover a categoria'
       })
   }

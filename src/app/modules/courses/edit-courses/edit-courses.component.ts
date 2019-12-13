@@ -113,11 +113,13 @@ export class EditCoursesComponent implements OnInit {
       .put(this.idCourse, idCategory, name, description)
       .subscribe(() => {
 
+        if('Deseja confirmar essa alteração') {
+
           alert('Curso alterado')
-          this._router.navigate(['/courses'])
+          this._router.navigate(['/main/courses'])
+        }
         }, error => console.error(error))
     }
     
   }
-
 }

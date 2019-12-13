@@ -6,10 +6,21 @@
     max-width: 280px;
     width: 100%;
     transition: all .5s ease-in-out;
-    z-index: 1;
+    z-index: 2;
 }
 
 .menu-info-hide {
     right: -999px;
     transition: all .5s ease-in-out;
+}
+
+.menu-info-overlay {
+    background: rgba(0,0,0,.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: all .5s ease-in-out;
+    z-index: 1;
 }

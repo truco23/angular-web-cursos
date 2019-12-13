@@ -63,9 +63,12 @@ export class EditCategoriesComponent implements OnInit {
 
         this.messageSuccess = 'Categoria alterada'
 
-        if(confirm('Alteração realizada, Deseja fazer outra alteração')) {return}
+        if(confirm('Deseja fazer outra alteração')) {
 
-        this._router.navigate(['categories'])
+          alert('Curso alterado')
+          this._router.navigate(['main/categories'])
+        }
+
       }, error => {
         console.error(error)
         this.messageDanger = 'Não foi possível alterar a categoria'

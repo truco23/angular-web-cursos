@@ -12,20 +12,25 @@
         <a class="btn btn-success" [routerLink]="['add']">Cadastrar</a>
     </div>
 
-    <ul class="list-group" *ngIf="categories">
-        <li class="list-group-item d-flex justify-content-between" *ngFor="let categorie of categories.docs">
-            <p class="mb-0">{{categorie.name}}</p>
-
-            <div class="d-flex">
-                <a class="p-1 text-info" title="Alterar" [routerLink]="['edit', categorie._id]">
-                    <i class="fas fa-1x fa-edit"></i>
-                </a>
-                <a class="p-1 text-danger" title="Romover" (click)="remove(categorie._id)">
-                    <i class="fas fa-1x fa-trash-alt"></i>
-                </a>
+    <div class="row" *ngIf="categories">
+        <div class="mt-1 col-md-6 col-lg-4" *ngFor="let categorie of categories.docs">
+            <div class="card p-3 list-course-card">
+                <header class="d-flex justify-content-between">
+                    <h5 class="card-title">{{categorie.name}}</h5>
+                    <div class="d-flex justify-content-between">
+                        <div class="list-courses-icons">
+                            <a class="text-info" title="Alterar" [routerLink]="['edit', categorie._id]">
+                                <i class="fas fa-1x fa-edit"></i>
+                            </a>
+                            <a class="p-1 text-danger" title="Romover" (click)="remove(categorie._id)">
+                                <i class="fas fa-1x fa-trash-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </header>
             </div>
-        </li>
-    </ul>
+        </div>
+    </div>
 
     <div *ngIf="!categories">
         <p class="alert alert-info">Ainda não temos nenhuma categoria cadastrada <a>Façã o cadastrado</a> </p>

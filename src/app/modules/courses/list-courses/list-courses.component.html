@@ -1,5 +1,5 @@
 <section class="container">
-    <app-jumbotron title="Categorias" bg="bg-transparent"></app-jumbotron>
+    <app-jumbotron title="Cursos" bg="bg-transparent"></app-jumbotron>
 
     <app-message 
         [success]="messageSuccess" 
@@ -24,8 +24,8 @@
     </form>
 
     <div *ngIf="courses">
-        <div class="alert alert-info col-md-12" *ngIf="!courses.length">
-            <p>Não temos curso cadastrado com essa categoria</p>
+        <div class="alert alert-info col-md-12 text-center" *ngIf="!courses.length">
+            <p class="mb-0">Não temos curso cadastrado com essa categoria</p>
         </div>
 
         <div class="row">
