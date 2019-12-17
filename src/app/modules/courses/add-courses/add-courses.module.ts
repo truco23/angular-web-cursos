@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AddCoursesComponent } from './add-courses.component';
-import { JumbotronModule } from '../../shared/jumbotron/jumbotron.module';
-import { MessageModule } from '../../shared/message/message.module';
+import { JumbotronModule } from '../../shared/components/jumbotron/jumbotron.module';
+import { MessageModule } from '../../shared/components/message/message.module';
 import { AddCoursesRoutingModule } from './add-courses.routing.module';
 
 @NgModule({

@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { ListCoursesComponent } from './list-courses.component';
 import { ListCoursesRoutingModule } from './list-courses.routing.module';
-import { JumbotronModule } from '../../shared/jumbotron/jumbotron.module';
-import { MessageModule } from '../../shared/message/message.module';
+import { JumbotronModule } from '../../shared/components/jumbotron/jumbotron.module';
+import { MessageModule } from '../../shared/components/message/message.module';
 
 @NgModule({
   declarations: [ListCoursesComponent],
