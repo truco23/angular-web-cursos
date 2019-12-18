@@ -17,6 +17,15 @@ const appRoutes: Routes = [
     {
         path: 'main/courses',
         loadChildren: () => import('./modules/courses/courses.routing.module').then(m => m.CorusesRoutingModule)
+    },
+    {
+        path: '**',
+        redirectTo: 'not-found',
+        pathMatch: 'full'
+    },
+    {
+        path: 'not-found',
+        loadChildren: () => import('./modules/not-found/not-found.module').then(m => m.NotFoundModule)
     }
 ]
 
