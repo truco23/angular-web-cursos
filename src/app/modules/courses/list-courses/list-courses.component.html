@@ -24,7 +24,7 @@
     </form>
 
     <div *ngIf="courses">
-        <div class="alert alert-info col-md-12 text-center" *ngIf="!courses.length">
+        <div class="alert alert-info col-md-12 text-center" *ngIf="!courses.length > 0">
             <p class="mb-0">Não temos curso cadastrado com essa categoria</p>
         </div>
 
@@ -51,9 +51,9 @@
         </div>
     </div>
 
-    <div class="row" *ngIf="!courses">
-        <p class="alert alert-info col-md-12">Ainda não temos nenhuma categoria cadastrada <a [routerLink]="['add']">Faço o
-                cadastrado</a> </p>
+    <div class="alert alert-info text-center" *ngIf="!courses.length > 0">
+        <p class="mb-0">Ainda não temos nenhuma categoria cadastrada</p>
+        <a [routerLink]="['add']">Faça o cadastrado</a> 
     </div>
 
     <nav aria-label="Page navigation example" *ngIf="courses.totalPages > 1">

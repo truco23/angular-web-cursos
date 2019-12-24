@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ListCoursesComponent } from './list-courses.component';
 import { LoginGuard } from '../../shared/guards/login.guard';
+import { CoursesResolve } from './resolve/list-courses.resolve';
 
 const listCoursesRoutes: Routes = [
     {
@@ -10,7 +11,10 @@ const listCoursesRoutes: Routes = [
         component: ListCoursesComponent,
         canActivate: [
             LoginGuard
-        ]
+        ],
+        resolve: {
+            courses: CoursesResolve
+        }
     }
 ]
 

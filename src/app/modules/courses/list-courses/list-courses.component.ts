@@ -4,6 +4,7 @@ import { CourseService } from '../services/course.service';
 import { CourseInterface } from '../typings/courses-typing.interface';
 import { CategoriesService } from '../../categories/services/categories.service';
 import { CategoriesInterface } from '../../categories/typings/categories-typing.interface';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-list-courses',
@@ -21,7 +22,8 @@ export class ListCoursesComponent implements OnInit {
 
   constructor(
     private _courseService: CourseService,
-    private _categoryService: CategoriesService
+    private _categoryService: CategoriesService,
+    private _activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -31,7 +33,7 @@ export class ListCoursesComponent implements OnInit {
       .subscribe(data => {
 
         this.data = data
-        this.courses = this.data.result.docs
+        this.courses = this._activatedRoute.snapshot.data['courses'].result.docs
         
         for (let i = 1; i < this.data.result.totalPages + 1; i++) {
           this.pagesNumber.push({ page: i })
