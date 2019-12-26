@@ -12,4 +12,5 @@ export class CardMainComponent {
   @Input() description: string
   @Input() link: string
   @Input() linkName: string
+  @Input() color: string = 'dark'
 }

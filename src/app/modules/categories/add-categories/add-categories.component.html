@@ -6,8 +6,8 @@
         [danger]="messageDanger">
     </app-message>
 
-    <div class="text-right">
-        <a class="btn btn-info mb-2" [routerLink]="[ '/main/categories']">voltar</a>
+    <div class="mb-4">
+        <a class="btn btn-info" [routerLink]="[ '/main/categories']">voltar</a>
     </div>
 
     <form [formGroup]="formAdd" (submit)="addCategorie($event)" #form="ngForm">

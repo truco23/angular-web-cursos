@@ -1,8 +1,8 @@
 <div class="card text-center mt-2">
-    <i class="fas card-img-top fa-5x text-info mt-2 {{icon}}"></i>
+    <i class="fas card-img-top fa-5x mt-2 {{icon}} text-{{color}}"></i>
     <div class="card-body">
         <h5 class="card-title">{{title}}</h5>
         <p class="card-text">{{description}}</p>
-        <a [routerLink]="[link]" class="btn btn-info btn-block">{{linkName}}</a>
+        <a [routerLink]="[link]" class="btn btn-{{color}} btn-block">{{linkName}}</a>
     </div>
 </div>
