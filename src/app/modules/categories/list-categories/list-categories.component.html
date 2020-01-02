@@ -1,12 +1,22 @@
 <section class="container">
-    <app-jumbotron title="Categorias" bg="bg-transparent"></app-jumbotron>
+    <app-modal-confirm 
+        [visible]="modal"
+        [title]="modalTitle"
+        [description]="modalDescription"
+        (action)="confirm($event)"
+        (close)="modal = $event">
+    </app-modal-confirm>
 
-    <app-message
-        [success]="messageSuccess"
-        [danger]="messageDanger"
-    >
+    <app-jumbotron 
+        title="Categorias" 
+        bg="bg-transparent">
+    </app-jumbotron>
+
+    <app-message 
+        [success]="messageSuccess" 
+        [danger]="messageDanger">
     </app-message>
-    
+
     <div class="text-right mb-4 d-flex justify-content-between">
         <a class="btn btn-info" [routerLink]="['/main']">Voltar</a>
         <a class="btn btn-success" [routerLink]="['add']">Cadastrar</a>
@@ -22,7 +32,7 @@
                             <a class="text-info" title="Alterar" [routerLink]="['edit', categorie._id]">
                                 <i class="fas fa-1x fa-edit"></i>
                             </a>
-                            <a class="p-1 text-danger" title="Romover" (click)="remove(categorie._id)">
+                            <a class="p-1 text-danger" title="Romover" (click)="remove(categorie._id, modal)">
                                 <i class="fas fa-1x fa-trash-alt"></i>
                             </a>
                         </div>

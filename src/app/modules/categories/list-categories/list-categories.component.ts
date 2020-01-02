@@ -15,6 +15,10 @@ export class ListCategoriesComponent implements OnInit {
   showMessage: boolean = false
   messageSuccess: string
   messageDanger: string
+  modal: boolean = false
+  modalTitle: string
+  modalDescription: string
+  idCategorie: string
 
   constructor(
     private _categorieService: CategoriesService
@@ -50,33 +54,49 @@ export class ListCategoriesComponent implements OnInit {
       )
   }
 
-  remove(id): void {
+  remove(id, modal): void {
 
-    if (!confirm('Deseja remover essa categoria?')) return
+    console.log('remove', modal);
+    
+    this.idCategorie = id
+    this.modal = !modal
+    this.modalTitle = 'Deseja remover essa categoria?'
+    this.modalDescription = 'Após remover essa categoria não poderá ser desfeita'
 
-    this._categorieService
-      .delete(id)
-      .subscribe((data: any) => {
+  }
+  
+  confirm(next) {
+    
+    console.log('confirm', next);
+    if(next) {
 
-        const copyCategories: any = this.categories;
-        const indice = copyCategories.docs.findIndex(data => data._id == id)
-
-        if(data.message) {
+      this._categorieService
+        .delete(this.idCategorie)
+        .subscribe((data: any) => {
+    
+          const copyCategories: any = this.categories;
+          const indice = copyCategories.docs.findIndex(data => data._id == this.idCategorie)
+    
+          if(data.message) {
+            
+            console.log('data', data);
+            this.messageDanger = data.message
+            return
+          }
           
-          console.log('data', data);
-          this.messageDanger = data.message
-          return
-        }
-        
-        copyCategories.docs.splice(indice, 1)
-
-        this.messageSuccess = 'Categoria removida'
-        this.messageDanger = ''
-      }, error => {
-
-        console.error(error)
-        this.messageSuccess = ''
-        this.messageDanger = 'Não foi possível remover a categoria'
-      })
+          copyCategories.docs.splice(indice, 1)
+    
+          this.messageSuccess = 'Categoria removida'
+          this.messageDanger = ''
+          this.modal = !this.modal
+        }, error => {
+    
+          console.error(error)
+          this.modal = !this.modal
+          this.messageSuccess = ''
+          this.messageDanger = 'Não foi possível remover a categoria'
+        })
+      
+    }
   }
 }
