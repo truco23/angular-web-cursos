@@ -32,4 +32,12 @@
             <button class="btn btn-primary" [disabled]="formAdd.invalid">Cadastrar</button>
         </fieldset>
     </form>
+
+    <app-modal-confirm 
+        [visible]="modal"
+        [title]="modalTitle"
+        [description]="modalDescription"
+        (action)="confirm($event)"
+        (close)="modal = $event">
+    </app-modal-confirm>
 </section>

@@ -12,6 +12,9 @@ export class AddCategoriesComponent implements OnInit {
   formAdd: FormGroup;
   messageSuccess: string
   messageDanger: string
+  modal: boolean = false
+  modalTitle: string
+  modalDescription: string
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -32,23 +35,36 @@ export class AddCategoriesComponent implements OnInit {
 
   addCategorie(e: Event): void {
     
-    e.preventDefault();
-
-    const {name} = this.formAdd.getRawValue()
-
-    this._categorieService
-      .create(name)
-      .subscribe(data => {
-        
-        if(data) {
-          
-          this.formAdd.reset()
-          this.messageSuccess = 'Categoria criada com sucesso';
-          return;
-        }
-
-        this.messageDanger = 'Não foi possível criar a categoria'
-      }, error => console.log(error))
+    e.preventDefault()
+    this.modal = true
+    this.modalTitle = 'Cadastro de categoria'
+    this.modalDescription = 'Deseja cadastrar essa categoria?'
+  }
+  
+  confirm(next) {
     
+    if(next) {
+
+      const {name} = this.formAdd.getRawValue()
+    
+      this._categorieService
+        .create(name)
+        .subscribe(data => {
+          
+          if(data) {
+            
+            this.formAdd.reset()
+            this.messageSuccess = 'Categoria criada com sucesso';
+            this.modal = false
+            return
+          }
+    
+          this.messageDanger = 'Não foi possível criar a categoria'
+        }, error => {
+          
+          console.log(error)
+          this.modal = false
+        })
+    }
   }
 }

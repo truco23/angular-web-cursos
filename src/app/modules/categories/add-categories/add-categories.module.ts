@@ -6,6 +6,7 @@ import { AddCategoriesRoutingModule } from './add-categories.routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { JumbotronModule } from '../../shared/components/jumbotron/jumbotron.module';
 import { MessageModule } from '../../shared/components/message/message.module';
+import { ModalConfirmModule } from '../../shared/components/modal/modal-confirm/modal-confirm.module';
 
 @NgModule({
   declarations: [AddCategoriesComponent],
@@ -14,6 +15,7 @@ import { MessageModule } from '../../shared/components/message/message.module';
     ReactiveFormsModule,
     JumbotronModule,
     MessageModule,
+    ModalConfirmModule,
     AddCategoriesRoutingModule
   ],
   exports: [AddCategoriesComponent]

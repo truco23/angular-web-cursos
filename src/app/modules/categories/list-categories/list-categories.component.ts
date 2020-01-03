@@ -56,18 +56,14 @@ export class ListCategoriesComponent implements OnInit {
 
   remove(id, modal): void {
 
-    console.log('remove', modal);
-    
     this.idCategorie = id
     this.modal = !modal
     this.modalTitle = 'Deseja remover essa categoria?'
     this.modalDescription = 'Após remover essa categoria não poderá ser desfeita'
-
   }
   
   confirm(next) {
     
-    console.log('confirm', next);
     if(next) {
 
       this._categorieService
@@ -96,7 +92,6 @@ export class ListCategoriesComponent implements OnInit {
           this.messageSuccess = ''
           this.messageDanger = 'Não foi possível remover a categoria'
         })
-      
     }
   }
 }
