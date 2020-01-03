@@ -11,7 +11,10 @@
             <a class="btn btn-info mb-2" [routerLink]="[ '/main/categories']">voltar</a>
         </div>
     
-        <form [formGroup]="formEdit" #form="ngForm" (submit)="update($event)">
+        <form 
+            [formGroup]="formEdit" 
+            #form="ngForm" 
+            (submit)="update($event)">
             <fieldset>
                 <label for="name">Nome da categoria:</label>
                 <div class="input-group mb-3">
@@ -39,4 +42,19 @@
                 <button class="btn btn-primary" [disabled]="formEdit.invalid">Alterar</button>
             </fieldset>
         </form>
+
+        <app-modal-confirm 
+            [visible]="modal"
+            [title]="modalTitle"
+            [description]="modalDescription"
+            (action)="confirm($event)"
+            (close)="modal = $event">
+        </app-modal-confirm>
+
+        <app-modal-confirm 
+            [visible]="modalInfo"
+            [title]="modalTitle"
+            (action)="confirmInfo($event)"
+            info="true">
+        </app-modal-confirm>
     </section>

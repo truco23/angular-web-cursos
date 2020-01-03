@@ -10,6 +10,7 @@ export class ModalConfirmComponent implements OnInit {
   @Input() visible: boolean = false
   @Input() title: string
   @Input() description: string
+  @Input() info: boolean = false
   @Output() close = new EventEmitter<boolean>()
   @Output() action = new EventEmitter<any>()
 

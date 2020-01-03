@@ -17,6 +17,10 @@ export class EditCategoriesComponent implements OnInit {
   categorie: CategoriesInterface
   messageSuccess: string
   messageDanger: string
+  modal: boolean = false
+  modalTitle: string
+  modalDescription: string
+  modalInfo: boolean = false
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -42,36 +46,54 @@ export class EditCategoriesComponent implements OnInit {
       .getById(this.idCategorie)
       .subscribe(data => {
 
-        const dados = this.formEdit.getRawValue()
         let result: any
+
         result = data
         this.categorie = result.categorie[0]
-        console.log('dados', dados);
-        
       }, error => console.error(error))
   }
 
-  update(e: Event):void {
+  update(e: Event): void {
 
     e.preventDefault()
 
-    const {name} = this.formEdit.getRawValue()
-    
-    this._categorieService
-      .put(this.idCategorie, name)
-      .subscribe(res => {
+    this.modal = true
+    this.modalTitle = 'Alteração de categoria'
+    this.modalDescription = 'Deseja alterar essa categoria?'
+  }
 
-        this.messageSuccess = 'Categoria alterada'
+  confirm(next) {
 
-        if(confirm('Deseja fazer outra alteração')) {
+    console.log('confirm', next);
 
-          alert('Curso alterado')
-          this._router.navigate(['main/categories'])
-        }
+    if (next) {
 
-      }, error => {
-        console.error(error)
-        this.messageDanger = 'Não foi possível alterar a categoria'
-      })
+      const { name } = this.formEdit.getRawValue()
+
+      this._categorieService
+        .put(this.idCategorie, name)
+        .subscribe(() => {
+
+          this.messageSuccess = 'Categoria alterada'
+          this.modal = false
+          this.modalInfo = true
+          this.modalTitle = 'Categoria alterada'
+        }, error => {
+
+          console.error(error)
+
+          this.modal = false
+          this.messageDanger = 'Não foi possível alterar a categoria'
+        })
+    }
+  }
+
+  confirmInfo(next) {
+
+    if (next) {
+      
+      this.modalInfo = false
+      this._router.navigate(['main/categories'])
+    }
   }
 }
