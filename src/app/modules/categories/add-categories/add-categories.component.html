@@ -1,6 +1,8 @@
 <section class="container">
     <app-jumbotron title="Cadastro categoria" bg="bg-transparent"></app-jumbotron>
     
+    <app-breadcrumb [list]="breadCrumb"></app-breadcrumb>
+    
     <app-message 
         [success]="messageSuccess" 
         [danger]="messageDanger">

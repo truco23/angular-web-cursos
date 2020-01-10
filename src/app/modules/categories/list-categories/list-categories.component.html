@@ -1,16 +1,10 @@
 <section class="container">
-    <app-modal-confirm 
-        [visible]="modal"
-        [title]="modalTitle"
-        [description]="modalDescription"
-        (action)="confirm($event)"
-        (close)="modal = $event">
-    </app-modal-confirm>
-
     <app-jumbotron 
         title="Categorias" 
         bg="bg-transparent">
     </app-jumbotron>
+
+    <app-breadcrumb [list]="breadCrumb"></app-breadcrumb>
 
     <app-message 
         [success]="messageSuccess" 
@@ -61,4 +55,12 @@
             </li>
         </ul>
     </nav>
+
+    <app-modal-confirm 
+        [visible]="modal"
+        [title]="modalTitle"
+        [description]="modalDescription"
+        (action)="confirm($event)"
+        (close)="modal = $event">
+    </app-modal-confirm>
 </section>

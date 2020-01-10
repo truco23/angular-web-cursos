@@ -1,10 +1,11 @@
 <section class="container">
         <app-jumbotron title="Alterar categoria" bg="bg-transparent"></app-jumbotron>
         
+        <app-breadcrumb [list]="breadCrumb"></app-breadcrumb>
+
         <app-message
             [success]="messageSuccess"
-            [danger]="messageDanger"
-        >
+            [danger]="messageDanger">
         </app-message>
         
         <div class="text-right">

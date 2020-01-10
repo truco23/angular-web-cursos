@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriesService } from '../services/categories.service';
 import { CategoriesInterface } from '../typings/categories-typing.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-categories',
@@ -19,13 +20,16 @@ export class ListCategoriesComponent implements OnInit {
   modalTitle: string
   modalDescription: string
   idCategorie: string
+  breadCrumb: string
 
   constructor(
-    private _categorieService: CategoriesService
+    private _categorieService: CategoriesService,
+    private _router: Router,
   ) { }
 
   ngOnInit(): void {
-
+    this.breadCrumb = JSON.stringify([{name: 'Categorias', link: this._router.url}])
+    
     this._categorieService
       .get()
       .subscribe(data => {

@@ -1,0 +1,6 @@
+.breadcrumb-item .active {
+    background-color: #343a40;
+    border-radius: .25rem;
+    color: #fff;
+    padding: .25rem;
+}

@@ -21,6 +21,7 @@ export class EditCategoriesComponent implements OnInit {
   modalTitle: string
   modalDescription: string
   modalInfo: boolean = false
+  breadCrumb: string
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -30,6 +31,13 @@ export class EditCategoriesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    const segment = this._router.parseUrl(this._router.url)
+    const categoria = `/${segment.root.children.primary.segments[0].path}/${segment.root.children.primary.segments[1].path}`
+
+    this.breadCrumb = JSON.stringify([
+      { name: 'Categorias', link: categoria }, 
+      { name: 'Editar', link: this._router.url }
+    ])
 
     this._activatedRoute.params.subscribe(params => this.idCategorie = params.id)
     this.formEdit = this._formBuilder.group({
