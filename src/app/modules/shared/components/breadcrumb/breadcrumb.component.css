@@ -1,6 +1,16 @@
+.breadcrumb-item a {
+    color: #343a40;
+}
+
 .breadcrumb-item .active {
-    background-color: #343a40;
-    border-radius: .25rem;
-    color: #fff;
-    padding: .25rem;
+    background-color: rgba(52, 58, 64, .1);
+    border-radius: .25rem 50rem 50rem .25rem;
+    padding: .5rem 1rem;
+}
+
+.breadcrumb-app {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 100%;
 }
